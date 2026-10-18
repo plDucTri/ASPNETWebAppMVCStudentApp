@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MVCReport.Models
+namespace ASPNETWebAppMVCStudentApp.Models
 {
     public class CourseViewModel
     {
