@@ -1,0 +1,21 @@
+﻿@model MVCReport.Models.CourseViewModel
+@{
+    ViewBag.Title = "Student Report";
+}
+
+<h2>Student Report</h2>
+
+@using (Html.BeginForm("Generate", "Report", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="SelectedCourseID">Select Course:</label>
+        @Html.DropDownListFor(
+            m => m.SelectedCourseID,
+            Model.Courses,
+            "-- Select a course --",
+            new { @class = "form-control", id = "SelectedCourseID" })
+    </div>
+    <br />
+    <button type="submit" name="action" value="preview" class="btn btn-primary">Print Preview</button>
+    <button type="submit" name="action" value="export" class="btn btn-success">Export to PDF</button>
+}
