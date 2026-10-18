@@ -8,7 +8,6 @@ namespace ASPNETWebAppMVCStudentApp.Controllers
 {
     public class AccountController : Controller
     {
-        // Using your existing Entity Framework context
         private SchoolDBEntities db = new SchoolDBEntities();
 
         [AllowAnonymous]
@@ -22,7 +21,6 @@ namespace ASPNETWebAppMVCStudentApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string username, string password)
         {
-            // Entity Framework query to the tblUsers table in SchoolDB
             var user = db.tblUsers.FirstOrDefault(u => u.Username == username && u.Password == password);
 
             if (user != null)
