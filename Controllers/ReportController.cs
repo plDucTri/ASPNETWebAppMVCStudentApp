@@ -19,12 +19,10 @@ namespace ASPNETWebAppMVCStudentApp.Controllers
             _context = new SchoolDBEntities();
         }
 
-        // GET: /Report
         public ActionResult Index()
         {
             var model = new CourseViewModel
             {
-                // This fills the dropdown with courses from your database
                 Courses = new SelectList(_context.Courses, "CourseID", "Title")
             };
             return View(model);
@@ -54,16 +52,13 @@ namespace ASPNETWebAppMVCStudentApp.Controllers
 
             var reportBytes = localReport.Render("PDF");
 
-            // --- HERE IS THE FIX ---
             if (action == "preview")
             {
-                // This opens the PDF directly in the browser (inline) instead of downloading
                 Response.AppendHeader("Content-Disposition", "inline; filename=StudentReport.pdf");
                 return File(reportBytes, "application/pdf");
             }
             else
             {
-                // This forces the download
                 return File(reportBytes, "application/pdf", "StudentReport.pdf");
             }
         }
